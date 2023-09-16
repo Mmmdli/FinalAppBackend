@@ -2,7 +2,8 @@ const Product = require('../models/Products');
 const Cart = require('../models/Cart');
 module.exports = {
     addTocart: async (req,res)=> {
-       const {userId, cartItem, quantity} = req.body;
+       const userId = req.user.id; 
+       const { cartItem, quantity } = req.body;
 
 
        try{
@@ -38,11 +39,11 @@ module.exports = {
     },
 
     getCart: async (req,res)=> {
-        const userId = req.params.id;
+        const userId = req.user.id;
         
         
         try{
-            const cart = await Cart.find({ userId })
+            const cart = await Cart.find({userId: userId })
               .populate('products.cartItem',"_id title supplier price imageUrl") ;
 
             res.status(200).json(cart)
