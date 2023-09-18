@@ -21,7 +21,7 @@ app.use('/api/products',productRouter)
 app.use('/api/', authRouter)
  app.use('/api/orders', orderRouter)
  app.use('/api/users', userRouter)
- app.use('/api/carts', cartRouter)
+ app.use('/api/cart', cartRouter)
 
 app.listen(process.env.PORT || port, () => console.log(`Example app listening on port ${process.env.PORT}!`)) 
 
